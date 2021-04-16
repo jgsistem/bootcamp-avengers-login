@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "770c5c1c-7f99-4075-9f38-fd4cececea5f",
+		"name": "FINALBOOTCAMP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API RENIEC PROD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dniruc.apisperu.com/api/v1/dni/10602835?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNpci5icnluZGVuLnJpb3NAZ21haWwuY29tIn0.wCy11NKrz5IiIrr70zlYLJvaNflxZggDJ_3NW2chCj4",
+					"protocol": "https",
+					"host": [
+						"dniruc",
+						"apisperu",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"dni",
+						"10602835"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNpci5icnluZGVuLnJpb3NAZ21haWwuY29tIn0.wCy11NKrz5IiIrr70zlYLJvaNflxZggDJ_3NW2chCj4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta BD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/bootcamp/v1/login/user/db/10602835",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bootcamp",
+						"v1",
+						"login",
+						"user",
+						"db",
+						"10602835"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta Reniec",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/bootcamp/v1/login/user/reniec/10602835",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bootcamp",
+						"v1",
+						"login",
+						"user",
+						"reniec",
+						"10602835"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grabar en BD",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dni\": \"10602835\",\n    \"nombres\": \"RENE RUBEN\",\n    \"apellidoPaterno\": \"PLAZ\",\n    \"apellidoMaterno\": \"CABRERA\",\n    \"codVerifica\": \"0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/bootcamp/v1/login/user/save/10602835",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bootcamp",
+						"v1",
+						"login",
+						"user",
+						"save",
+						"10602835"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login BD / Reniec",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/bootcamp/v1/login/user/10602835",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bootcamp",
+						"v1",
+						"login",
+						"user",
+						"10602835"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
