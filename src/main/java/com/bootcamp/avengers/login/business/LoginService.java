@@ -25,7 +25,7 @@ public class LoginService {
     public LoginResponse loginUsaurio(String dni) {
 
         LoginResponse loginResponse = new LoginResponse();
-        Boolean bSave = false;
+        Boolean bSave = true;
 
         // Buscarmos en la BD
         RestTemplate restTemplate = new RestTemplate();
@@ -42,6 +42,7 @@ public class LoginService {
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 url = "http://localhost:8080/bootcamp/v1/login/user/save/" + dni;
+
                 User userToDB = new User();
                 userToDB.setDni(userReniec.getBody().getDni());
                 userToDB.setNames(userReniec.getBody().getNombres() + " ");
@@ -49,10 +50,18 @@ public class LoginService {
                 userToDB.setMotherlastname(userReniec.getBody().getApellidoMaterno() + " ");
                 userToDB.setStatus(Constants.STATUS_ACTVO);
 
+                ReniecResponse reniecResponse = new ReniecResponse();
+                reniecResponse.setDni(userReniec.getBody().getDni());
+                reniecResponse.setNombres(userReniec.getBody().getNombres());
+                reniecResponse.setApellidoMaterno(userReniec.getBody().getApellidoMaterno());
+                reniecResponse.setApellidoPaterno(userReniec.getBody().getApellidoPaterno());
+                reniecResponse.setCodVerifica(userReniec.getBody().getCodVerifica());
+
                 if (bSave) {
-                    HttpEntity<User> requestEntity = new HttpEntity<>(userToDB, headers);
+                    HttpEntity<ReniecResponse> requestEntity = new HttpEntity<>(reniecResponse, headers);
                     RestTemplate restTemplatePost = new RestTemplate();
-                    ResponseEntity<User> responseEntity = restTemplatePost.postForEntity(url, requestEntity, User.class);
+                    ResponseEntity<ReniecResponse> responseEntity =
+                            restTemplatePost.postForEntity(url, requestEntity, ReniecResponse.class);
                 } else {
                     loginResponse.setDni(userReniec.getBody().getDni());
                     loginResponse.setFatherlastname(userReniec.getBody().getApellidoPaterno());
